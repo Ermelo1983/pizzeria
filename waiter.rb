@@ -1,3 +1,5 @@
+require './kitchen'
+
 class Waiter
   def greet_guest
     puts "Hello, welcome to our pizzeria. Can i help you?"
@@ -16,6 +18,7 @@ class Waiter
     when 1
       puts "Let me get the menu."
       list_menu
+      order_food(gets.chomp.to_i)
     when 2
       puts "Thank you for your visit."
     else
@@ -23,13 +26,19 @@ class Waiter
     end
   end
 
-  def initialize(menu)
-    @menu =menu
+  def initialize(menu, kitchen)
+    @menu = menu
+    @kitchen = kitchen
   end
 
   def list_menu
-    @menu.contents.each do |dish|
-      puts "#{dish.name}"
+    @menu.contents.each_with_index do |dish, index|
+      puts "#{index + 1}. #{dish.name}"
     end
+  end
+
+  def order_food(choice)
+    dish = @menu.contents[ choice ]
+    @kitchen.order(dish)
   end
 end
