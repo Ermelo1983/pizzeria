@@ -7,13 +7,11 @@ class Waiter
     puts "How can I be of service?"
     puts "1. Would you like to order a pizza?"
     puts "2. Would you like to leave?"
-
     choice = gets.chomp.to_i
+    take_order(choice)
   end
 
   def take_order(order_number)
-    take_order(gets.chomp.to_i)
-
     case order_number
     when 1
       puts "Let me get the menu."
@@ -22,6 +20,5 @@ class Waiter
     else
       puts "I really don't understand."
     end
-
   end
 end
