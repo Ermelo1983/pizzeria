@@ -29,7 +29,7 @@ class Waiter
 
   def list_menu
     @menu.contents.each do |dish|
-      puts "#{dish}"
+      puts "#{dish.name}"
     end
   end
 end
